@@ -1,5 +1,5 @@
 #include "gamemanager.h"
-
+//on my end with all the spots commented out mentioning it crashing are not commented out its whats making it crash
 namespace SDLFramework {
     GameManager* GameManager::sInstance = nullptr;
 
@@ -42,7 +42,10 @@ namespace SDLFramework {
 
     void GameManager::Update() {
         mInputManager->Update();
- 
+       
+        
+        //mStartScreen->Update();(one of the causes to crash)
+
         if (mInputManager->KeyDown(SDL_SCANCODE_I)) {
            
             
@@ -97,7 +100,9 @@ namespace SDLFramework {
 
     void GameManager::Render() {
         mGraphics->ClearBackBuffer();
-       
+      
+        
+        //  mStartScreen->Render(); (one of the causes to crash)
        
     
        
@@ -136,11 +141,16 @@ namespace SDLFramework {
             PhysicsManager::CollisionFlags::Hostile |
             PhysicsManager::CollisionFlags::Friendly);
 
-
+        //createscreens
+        
+        
+        //mStartScreen = new StartScreen; (one of the causes of the crash)
+        
+       
         //challenges 2 -> finnish setting up collision layers (friendly projectiles, hostile projectiles)
 
         //Initialize all other modules
-        mTimer = Timer::Instance();
+       
        
 
        
@@ -150,7 +160,10 @@ namespace SDLFramework {
     }
 
     GameManager::~GameManager() {
-       
+       //release variables
+        
+        //delete mStartScreen;
+        //mStartScreen = nullptr;
 
         //Release Modules
         Graphics::Release();

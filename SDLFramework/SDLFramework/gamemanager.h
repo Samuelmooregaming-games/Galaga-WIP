@@ -1,12 +1,8 @@
 #pragma once
 #include "Graphics.h"
-#include "Timer.h"
-#include "GameEntity.h"
-#include"texture.h"
-#include "inputmanager.h"
-#include "animatedtexture.h"
 #include "audiomanager.h"
 #include"physicsmanager.h"
+#include "StartScreen.h"
 namespace SDLFramework {
 	class GameManager {
 	public:
@@ -38,8 +34,9 @@ namespace SDLFramework {
 		InputManager* mInputManager;
 		AudioManager* mAudiomanager;
 		PhysicsManager* mPhysicsManager;
-
-
+		
+		//startscreen
+		StartScreen* mStartScreen;
 		
 		SDL_Event mevents;
 	};
