@@ -1,14 +1,13 @@
 #pragma once
-# include "PhysEntity.h"
 #include "AnimatedTexture.h"
 #include "InputManager.h"
 #include "AudioManager.h"
 #include "BoxCollider.h"
-#include"PhysicsManager.h"
-#include"bullet.h"
+#include "Bullet.h"
+
 using namespace SDLFramework;
 
-class Player :public PhysEntity {
+class Player : public PhysEntity {
 public:
 	Player();
 	~Player();
@@ -17,7 +16,6 @@ public:
 	void Render() override;
 
 	void Visible(bool visible);
-
 	bool IsAnimating();
 
 	int Score();
@@ -27,12 +25,14 @@ public:
 
 	void WasHit();
 
+	//Inherited from PhysEntity
 	bool IgnoreCollisions() override;
 	void Hit(PhysEntity* other) override;
 
 private:
 	static const int MAX_BULLETS = 2;
 	Bullet* mBullets[MAX_BULLETS];
+
 	bool mWasHit;
 
 	Timer* mTimer;
@@ -41,7 +41,6 @@ private:
 
 	bool mVisible;
 	bool mAnimating;
-
 
 	Texture* mShip;
 	AnimatedTexture* mDeathAnimation;

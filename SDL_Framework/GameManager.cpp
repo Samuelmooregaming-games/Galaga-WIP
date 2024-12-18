@@ -42,31 +42,8 @@ namespace SDLFramework {
 
     void GameManager::Update() {
         mInputManager->Update();
+
         mScreenManager->Update();
-       
-        
-
-     /*   if (mInputManager->KeyDown(SDL_SCANCODE_W)) {
-            
-        }
-        else if (mInputManager->KeyDown(SDL_SCANCODE_S)) {
-            
-        }
-        //To prevent diagonal movement, add an else to the if statement below
-        if (mInputManager->KeyDown(SDL_SCANCODE_A)) {
-            
-        }
-        else if (mInputManager->KeyDown(SDL_SCANCODE_D)) {
-            
-        }
-
-        if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
-
-        }
-
-        if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
-            
-        }*/
     }
 
     void GameManager::LateUpdate() {
@@ -78,9 +55,7 @@ namespace SDLFramework {
         //This is the old frame we need to clear
         mGraphics->ClearBackBuffer();
         mScreenManager->Render();
-        
-        
-            
+
         //Actually showing everthing that we have told to render
         mGraphics->Render();
     }
@@ -99,9 +74,7 @@ namespace SDLFramework {
         mInputManager = InputManager::Instance();
         mAudioManager = AudioManager::Instance();
         mPhysicsManager = PhysicsManager::Instance();
-        mRandom = Random::Instance();
         mScreenManager = ScreenManager::Instance();
-        
 
         //Create my Physics Layers
         mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Friendly,
@@ -112,43 +85,12 @@ namespace SDLFramework {
             PhysicsManager::CollisionFlags::Friendly |
             PhysicsManager::CollisionFlags::FriendlyProjectile);
 
-        mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::FriendlyProjectile,
-           
-            PhysicsManager::CollisionFlags::Hostile);
-
-        mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::HostileProjectile,
-            
-            PhysicsManager::CollisionFlags::Friendly);
-
-        //Creating Screens
-        
-        
-
         //Creating GameObjects
 
-        std::cout << "rng int test " << mRandom->RandomInt() << std::endl;
-        std::cout << "rng int test " << mRandom->RandomInt() << std::endl;
-        std::cout << "rng int test " << mRandom->RandomInt() << std::endl;
-
-        std::cout << "rng float test " << mRandom->RandomFloat() << std::endl;
-        std::cout << "rng float test " << mRandom->RandomFloat() << std::endl;
-        std::cout << "rng float test " << mRandom->RandomFloat() << std::endl;
-
-        std::cout << "rng range test " << mRandom->RandomRange(0, 10) << std::endl;
-        std::cout << "rng range test " << mRandom->RandomRange(0, 10) << std::endl;
-        std::cout << "rng range test " << mRandom->RandomRange(0, 10) << std::endl;
-      
-        
-        std::cout << "rng range float test" << mRandom->RandomRange(0.0f, 1.0f) << std::endl;
-        std::cout << "rng range float test" << mRandom->RandomRange(0.0f, 1.0f) << std::endl;
-        std::cout << "rng range float test " << mRandom->RandomRange(0.0f, 1.0f) << std::endl;
-
-       
     }
 
     GameManager::~GameManager() {
         //Release Variables
-        
 
         //Release Modules
         Graphics::Release();
@@ -169,18 +111,11 @@ namespace SDLFramework {
         PhysicsManager::Release();
         mPhysicsManager = nullptr;
 
-        Random::Release();
-        mRandom = nullptr;
-
-     
         ScreenManager::Release();
         mScreenManager = nullptr;
-
-        
 
         //Quit SDl Subsystems
         SDL_Quit();
     }
     //Namespace bracket is below
-
 }

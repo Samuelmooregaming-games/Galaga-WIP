@@ -1,35 +1,32 @@
 #pragma once
-#include "beziarpath.h"
+#include "BezierPath.h"
 #include "AnimatedTexture.h"
 #include "PhysEntity.h"
-#include "player.h"
+#include "Player.h"
 #include "Formation.h"
 
 using namespace SDLFramework;
 
 class Enemy : public PhysEntity {
 public:
-	
-	// if state added update handlestates
+	//If we add new states here, make sure to update HandleStates in the .cpp
 	enum States { FlyIn, InFormation, Diving, Dead };
 	enum Types { Butterfly, Wasp, Boss };
 
 	static void CreatePaths();
 	static void SetFormation(Formation* formation);
-	States CurrentState();
 
+	States CurrentState();
 	Types Type();
 	int Index();
-	
+
 	Enemy(int path, int index, bool challenge);
 	virtual ~Enemy();
 
 	virtual void Dive(int type = 0);
-	
+
 	void Update() override;
 	void Render() override;
-
-
 
 protected:
 	static Formation* sFormation;
@@ -37,11 +34,10 @@ protected:
 	static Player* sPlayer;
 
 	Timer* mTimer;
-	
-	Texture* mTextures[2];
-	
-	States mCurrentState;
 
+	Texture* mTextures[2];
+
+	States mCurrentState;
 	Types mType;
 
 	int mIndex;
@@ -49,7 +45,7 @@ protected:
 	bool mChallengeStage;
 
 	Vector2 mDiveStartPosition;
-	
+
 	unsigned mCurrentPath;
 
 	unsigned mCurrentWaypoint;
@@ -72,10 +68,10 @@ protected:
 
 	void HandleStates();
 
-	virtual void RenderFlyState();
+	virtual void RenderFlyInState();
 	virtual void RenderInFormationState();
 	virtual void RenderDiveState() = 0;
 	virtual void RenderDeadState() = 0;
-	
+
 	void RenderStates();
 };

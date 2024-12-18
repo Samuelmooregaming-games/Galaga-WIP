@@ -1,19 +1,20 @@
 #pragma once
-#include "audiomanager.h"
-#include "level.h"
-#include "player.h"
+#include "Level.h"
+#include "Player.h"
 
-
-//using namespace SDLFramework;
+using namespace SDLFramework;
 
 class PlayScreen : public GameEntity {
 public:
 	PlayScreen();
 	~PlayScreen();
-	void StartNextLevel();
+
 	void StartNewGame();
-	void Update() override;
+	void StartNextLevel();
+
 	bool GameOver();
+
+	void Update() override;
 	void Render() override;
 
 private:
@@ -24,15 +25,15 @@ private:
 	PlaySideBar* mSideBar;
 
 	Texture* mStartLabel;
-	
+
+	Player* mPlayer;
+
 	Level* mLevel;
-	Player * mPlayer;
 
 	float mLevelStartTimer;
 	float mLevelStartDelay;
 
 	bool mGameStarted;
 	bool mLevelStarted;
-	
 	int mCurrentStage;
 };

@@ -63,7 +63,8 @@ namespace SDLFramework {
 	void Texture::Render() {
 		Vector2 pos = Position(World);
 		Vector2 scale = Scale(World);
-		// bring over to framework
+
+		//TODO: BRING THIS CHANGE OVER TO THE FRAMEWORK!
 		mDestinationRect.x = (int)(pos.x - mWidth * scale.x * 0.5f);
 		mDestinationRect.y = (int)(pos.y - mHeight * scale.y * 0.5f);
 		mDestinationRect.w = (int)(mWidth * scale.x);

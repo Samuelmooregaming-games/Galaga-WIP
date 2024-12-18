@@ -1,11 +1,87 @@
-#include "boss.h"
+#include "Boss.h"
+
 std::vector<std::vector<Vector2>> Boss::sDivePaths;
 
 void Boss::CreateDivePaths() {
-int currentPath = 0;
-BeziarPath* path = new BeziarPath();
+	int currentPath = 0;
+	BezierPath* path = new BezierPath();
 
-path->AddCurve({
+	path->AddCurve({
+		Vector2(0.0f, 0.0f),
+		Vector2(0.0f, -60.0f),
+		Vector2(-90.0f, -60.0f),
+		Vector2(-90.0f, 0.0f) }, 15);
+	path->AddCurve({
+		Vector2(-90.0f, 0.0f),
+		Vector2(-90.0f, 60.0f),
+		Vector2(-100.0f, 272.0f),
+		Vector2(-15.0f, 275.0f) }, 15);
+	path->AddCurve({
+		Vector2(-15.0f, 275.0f),
+		Vector2(85.0f, 275.0f),
+		Vector2(85.0f, 125.0f),
+		Vector2(-15.0f, 125.0f) }, 15);
+	path->AddCurve({
+		Vector2(-15.0f, 125.0f),
+		Vector2(-175.0f, 125.0f),
+		Vector2(0.0f, 450.0f),
+		Vector2(125.0f, 450.0f) }, 25);
+	path->AddCurve({
+		Vector2(120.0f, 450.0f),
+		Vector2(160.0f, 450.0f),
+		Vector2(200.0f, 500.0f),
+		Vector2(200.0f, 550.0f) }, 15);
+	path->AddCurve({
+		Vector2(200.0f, 550.0f),
+		Vector2(200.0f, 540.0f),
+		Vector2(200.0f, 810.0f),
+		Vector2(200.0f, 800.0f) }, 15);
+
+	sDivePaths.push_back(std::vector<Vector2>());
+	path->Sample(&sDivePaths[currentPath]);
+	delete path;
+
+	currentPath = 1;
+	path = new BezierPath();
+
+	path->AddCurve({
+		Vector2(0.0f, 0.0f),
+		Vector2(0.0f, -60.0f),
+		Vector2(90.0f, -60.0f),
+		Vector2(90.0f, 0.0f) }, 15);
+	path->AddCurve({
+		Vector2(90.0f, 0.0f),
+		Vector2(90.0f, 60.0f),
+		Vector2(100.0f, 272.0f),
+		Vector2(15.0f, 275.0f) }, 15);
+	path->AddCurve({
+		Vector2(15.0f, 275.0f),
+		Vector2(-85.0f, 275.0f),
+		Vector2(-85.0f, 125.0f),
+		Vector2(15.0f, 125.0f) }, 15);
+	path->AddCurve({
+		Vector2(15.0f, 125.0f),
+		Vector2(175.0f, 125.0f),
+		Vector2(0.0f, 450.0f),
+		Vector2(-125.0f, 450.0f) }, 25);
+	path->AddCurve({
+		Vector2(-120.0f, 450.0f),
+		Vector2(-160.0f, 450.0f),
+		Vector2(-200.0f, 500.0f),
+		Vector2(-200.0f, 550.0f) }, 15);
+	path->AddCurve({
+		Vector2(-200.0f, 550.0f),
+		Vector2(-200.0f, 540.0f),
+		Vector2(-200.0f, 810.0f),
+		Vector2(-200.0f, 800.0f) }, 15);
+
+	sDivePaths.push_back(std::vector<Vector2>());
+	path->Sample(&sDivePaths[currentPath]);
+	delete path;
+
+	currentPath = 2;
+	path = new BezierPath();
+	path->AddCurve({
 	Vector2(0.0f, 0.0f),
 	Vector2(0.0f, -60.0f),
 	Vector2(-90.0f, -60.0f),
@@ -13,35 +89,15 @@ path->AddCurve({
 	path->AddCurve({
 	Vector2(-90.0f, 0.0f),
 	Vector2(-90.0f, 60.0f),
-	Vector2(-100.0f, 272.0f),
-	Vector2(-15.0f, 275.0f) }, 15);
-	path->AddCurve({
-	Vector2(-15.0f, 275.0f),
-	Vector2(85.0f, 275.0f),
-	Vector2(85.0f, 125.0f),
-	Vector2(-15.0f, 125.0f) }, 15);
-	path->AddCurve({
-	Vector2(-15.0f, 125.0f),
-	Vector2(-175.0f, 125.0f),
-	Vector2(0.0f, 450.0f),
-	Vector2(125.0f, 450.0f) }, 25);
-path->AddCurve({
-	Vector2(120.0f, 450.0f),
-	Vector2(160.0f, 450.0f),
-	Vector2(200.0f, 500.0f),
-	Vector2(200.0f, 550.0f) }, 15);
-path->AddCurve({
-	Vector2(200.0f, 550.0f),
-	Vector2(200.0f, 540.0f),
-	Vector2(200.0f, 810.0f),
-	Vector2(200.0f, 800.0f) }, 15);
-sDivePaths.push_back(std::vector<Vector2>());
-path->sample(&sDivePaths[currentPath]);
-delete path;
+	Vector2(100.0f, 340.0f),
+	Vector2(100.0f, 400.0f) }, 15);
 
-currentPath = 1;
-path = new BeziarPath();
+	sDivePaths.push_back(std::vector<Vector2>());
+	path->Sample(&sDivePaths[currentPath]);
+	delete path;
 
+	currentPath = 3;
+	path = new BezierPath();
 path->AddCurve({
 	Vector2(0.0f, 0.0f),
 	Vector2(0.0f, -60.0f),
@@ -50,73 +106,83 @@ path->AddCurve({
 path->AddCurve({
 	Vector2(90.0f, 0.0f),
 	Vector2(90.0f, 60.0f),
-	Vector2(100.0f, 272.0f),
-	Vector2(15.0f, 275.0f) }, 15);
-path->AddCurve({
-	Vector2(15.0f, 275.0f),
-	Vector2(-85.0f, 275.0f),
-	Vector2(-85.0f, 125.0f),
-	Vector2(15.0f, 125.0f) }, 15);
-path->AddCurve({
-	Vector2(15.0f, 125.0f),
-	Vector2(175.0f, 125.0f),
-	Vector2(0.0f, 450.0f),
-	Vector2(-125.0f, 450.0f) }, 25);
-path->AddCurve({
-	Vector2(-120.0f, 450.0f),
-	Vector2(-160.0f, 450.0f),
-	Vector2(-200.0f, 500.0f),
-	Vector2(-200.0f, 550.0f) }, 15);
-path->AddCurve({
-	Vector2(-200.0f, 550.0f),
-	Vector2(-200.0f, 540.0f),
-	Vector2(-200.0f, 810.0f),
-	Vector2(-200.0f, 800.0f) }, 15);
+	Vector2(-100.0f, 340.0f),
+	Vector2(-100.0f, 400.0f) }, 15);
 
-sDivePaths.push_back(std::vector<Vector2>());
-path->sample(&sDivePaths[currentPath]);
-delete path;
+	sDivePaths.push_back(std::vector<Vector2>());
+	path->Sample(&sDivePaths[currentPath]);
+	delete path;
+}
+
+Vector2 Boss::LocalFormationPosition() {
+	Vector2 retVal;
+	int dir = mIndex % 2 == 0 ? -1 : 1;
+
+	retVal.x = (sFormation->GridSize().x + sFormation->GridSize().x * 2 * (mIndex / 2)) * (float)dir;
+	retVal.y = -sFormation->GridSize().y;
+
+	return retVal;
 }
 
 void Boss::Dive(int type) {
 	mCaptureDive = type != 0;
 
 	Enemy::Dive();
+
+	if (mCaptureDive) {
+		mCapturing = false;
+		mCurrentPath = 2 + Random::Instance()->RandomRange(0, 1);
+		mCaptureBeam->ResetAnimation();
+	}
+	else {
+		mCurrentPath = mIndex % 2;
+	}
 }
 
-Vector2 Boss::LocalFormationPosition() { 
-	Vector2 retVal;
-	int dir = mIndex % 2 == 0 ? -1 : 1;
-
-	retVal.x =
-		(sFormation->GridSize().x + sFormation->GridSize().x * 2 * (mIndex / 2)) *
-		(float)dir;
-	retVal.y = -sFormation->GridSize().y;
-
-	return retVal;
+void Boss::HandleCaptureBeam() {
+	mCaptureBeam->Update();
+	if (!mCaptureBeam->IsAnimating()) {
+		Translate(Vec2_Up * mSpeed * mTimer->DeltaTime(), World);
+		if (Position().y >= 910.0f) {
+			Position(WorldFormationPosition().x, -20.0f);
+			mCapturing = false;
+		}
+	}
 }
 
 void Boss::HandleDiveState() {
 	int currentPath = mIndex % 2;
-
 	if (mCaptureDive) {
 		currentPath += 2;
 	}
-
 	if (mCurrentWaypoint < sDivePaths[currentPath].size()) {
-		Vector2 waypointpos = mDiveStartPosition + sDivePaths[currentPath][mCurrentWaypoint];
-		Vector2 dist = waypointpos - Position();
+		//Follow dive path
+		Vector2 waypointPos = mDiveStartPosition + 
+			sDivePaths[currentPath][mCurrentWaypoint];
+
+		Vector2 dist = waypointPos - Position();
 
 		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
 		Rotation(atan2(dist.y, dist.x) * RAD_TO_DEG + 90.0f);
 
-		if ((waypointpos - Position()).MagnitudeSqr() < EPSILON * mSpeed / 25) {
+
+
+		if ((waypointPos - Position()).MagnitudeSqr() < EPSILON * mSpeed / 25) {
 			mCurrentWaypoint++;
-
 		}
-	}
 
-	else {
+		if (mCurrentWaypoint == sDivePaths[mCurrentPath].size()) {
+			if (mCaptureDive) {
+				mCapturing = true;
+				Rotation(180.0f);
+			}
+			else {
+				Position(Vector2(WorldFormationPosition().x, 20.0f));
+			}
+		}
+	} else {
+		if (!mCaptureDive || !mCapturing) {
+		//Return to Formation
 		Vector2 dist = WorldFormationPosition() - Position();
 
 		Translate(dist.Normalized() * mSpeed * mTimer->DeltaTime(), World);
@@ -126,18 +192,24 @@ void Boss::HandleDiveState() {
 			JoinFormation();
 		}
 	}
-
+	else {
+			HandleCaptureBeam();
+		}
+		
+	}
 }
-
 void Boss::HandleDeadState() { }
 
 void Boss::RenderDiveState() {
-	//debug
 	mTextures[0]->Render();
+
+	//debug render of the dive path
+	//TODO: Comment out the below for finished product!
 	int currentPath = mIndex % 2;
 	if (mCaptureDive) {
 		currentPath += 2;
 	}
+
 	for (int i = 0; i < sDivePaths[currentPath].size() - 1; i++) {
 		Graphics::Instance()->DrawLine(
 			mDiveStartPosition.x + sDivePaths[currentPath][i].x,
@@ -146,44 +218,37 @@ void Boss::RenderDiveState() {
 			mDiveStartPosition.y + sDivePaths[currentPath][i + 1].y
 		);
 	}
-	//retun here
-	Vector2 finalpos = WorldFormationPosition();
-
-	Vector2 pathendpos = mDiveStartPosition + sDivePaths[currentPath][sDivePaths[currentPath].size() - 1];
-
-	Graphics::Instance()->DrawLine(
-		pathendpos.x,
-		pathendpos.y,
-		finalpos.x,
-		finalpos.y
-	);
-	
-	
+	if (mCapturing && mCaptureBeam->IsAnimating()) {
+		mCaptureBeam->Render();
+	}
 }
-
-
 void Boss::RenderDeadState() { }
 
-
-
-Boss::Boss(int path, int index, bool challenge) 
-	: Enemy(path, index, challenge) {
+Boss::Boss(int path, int index, bool challenge) :
+Enemy(path, index, challenge)
+{
 	mTextures[0] = new Texture("Bosses.png", 0, 0, 64, 64);
 	mTextures[1] = new Texture("Bosses.png", 64, 0, 64, 64);
- 
-	for (int i = 0; i < 2; i++) {
-		mTextures[i]->Parent(this);
-		mTextures[i]->Position(Vec2_Zero);
+
+	for (auto texture : mTextures) {
+		texture->Parent(this);
+		texture->Position(Vec2_Zero);
+
 
 	}
 
 	mType = Enemy::Boss;
+	
+	mCurrentPath = 0;
+	mCapturing = false;
+
+	mCaptureBeam = new CaptureBeam();
+	mCaptureBeam->Parent(this);
+	mCaptureBeam->Position(0.0f, -190.0f);
+	mCaptureBeam->Rotation(180.0f);
 }
 
 Boss::~Boss() {
-
+	delete mCaptureBeam;
+	mCaptureBeam = nullptr;
 }
-
-
-
-

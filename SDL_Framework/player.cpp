@@ -4,7 +4,7 @@
 void Player::HandleMovement() {
 	if (mInput->KeyDown(SDL_SCANCODE_RIGHT) || mInput->KeyDown(SDL_SCANCODE_D)) {
 		Translate(Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
-	}
+	} 
 	else if (mInput->KeyDown(SDL_SCANCODE_LEFT) || mInput->KeyDown(SDL_SCANCODE_A)) {
 		Translate(-Vec2_Right * mMoveSpeed * mTimer->DeltaTime(), World);
 	}
@@ -25,7 +25,7 @@ void Player::HandleFiring() {
 		for (int i = 0; i < MAX_BULLETS; i++) {
 			if (!mBullets[i]->Active()) {
 				mBullets[i]->Fire(Position());
-				mAudio->PlaySFX("Audio/Fire.wav");
+				mAudio->PlaySFX("SFX/Fire.wav");
 				break;
 			}
 		}
@@ -64,10 +64,10 @@ Player::Player() {
 	AddCollider(new BoxCollider(Vector2(20.0f, 37.0f)), Vector2(-18.0f, 10.0f));
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Friendly);
+	
 	for (int i = 0; i < MAX_BULLETS; i++) {
 		mBullets[i] = new Bullet(true);
 	}
-
 }
 
 Player::~Player() {
@@ -88,6 +88,7 @@ Player::~Player() {
 }
 
 void Player::Visible(bool visible) {
+	std::cout << "Visible: " << visible << std::endl;
 	mVisible = visible;
 }
 
@@ -106,13 +107,13 @@ int Player::Score() {
 int Player::Lives() {
 	return mLives;
 }
-//todo temp functionality hit()
+
+//TODO: Temporary functionality. Hit() will be what runs this functionality
 void Player::WasHit() {
 	mLives -= 1;
 	mAnimating = true;
 	mDeathAnimation->ResetAnimation();
-	mAudio->PlaySFX("Audio/PlayerExplosion.wav");
-
+	mAudio->PlaySFX("SFX/PlayerExplosion.wav");
 }
 
 bool Player::IgnoreCollisions() {

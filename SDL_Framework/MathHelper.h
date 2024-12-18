@@ -85,10 +85,7 @@ namespace SDLFramework {
 			point.y = (float)round(point.y);
 			return point;
 		}
-		
 	};
-
-
 
 	//Performing linear interpolation
 	//Used to create smooth movement in games

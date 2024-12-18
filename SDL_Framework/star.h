@@ -1,6 +1,6 @@
 #pragma once
-#include"Texture.h"
-#include"Timer.h"
+#include "Texture.h"
+#include "Timer.h"
 #include "Random.h"
 
 using namespace SDLFramework;

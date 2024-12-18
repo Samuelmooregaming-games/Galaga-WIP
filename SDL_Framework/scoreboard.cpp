@@ -1,9 +1,10 @@
-#include"scoreboard.h"
+#include "Scoreboard.h"
 
 void Scoreboard::ClearBoard() {
 	for (auto texture : mScore) {
-		delete texture;		
+		delete texture;
 	}
+
 	mScore.clear();
 }
 
@@ -18,7 +19,8 @@ void Scoreboard::Score(int score) {
 	ClearBoard();
 
 	if (score == 0) {
-		for (int i = 0; i < 6; i++) {
+		//The number 2 represents how many ZEROS we want to display
+		for (int i = 0; i < 2; i++) {
 			mScore.push_back(new Texture("0", "emulogic.ttf", 32, mColor));
 			mScore[i]->Parent(this);
 			mScore[i]->Position(Vector2(-32.0f * i, 0.0f));
@@ -27,7 +29,7 @@ void Scoreboard::Score(int score) {
 	else {
 		std::string str = std::to_string(score);
 		unsigned lastIndex = (unsigned)str.length() - 1;
-
+		
 		for (int i = 0; i <= lastIndex; i++) {
 			mScore.push_back(new Texture(str.substr(i, 1), "emulogic.ttf", 32, mColor));
 			mScore[i]->Parent(this);
@@ -44,5 +46,4 @@ void Scoreboard::Render() {
 
 Scoreboard::~Scoreboard() {
 	ClearBoard();
-
 }

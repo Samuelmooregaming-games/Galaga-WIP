@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -114,10 +114,8 @@
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)\dep\devel\x64\*.dll" "$(OutDir)
-
 xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s
-
-xcopy "$(ProjectDir)\Data\*" "$(OutDir)Assets\" /y /s</Command>
+xcopy "$(ProjectDir)\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,84 +138,84 @@ xcopy "$(ProjectDir)\Data\*" "$(OutDir)Assets\" /y /s</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)\dep\devel\x64\*.dll" "$(OutDir)
-
 xcopy "$(ProjectDir)\Assets\*" "$(OutDir)Assets\" /y /s
-
-xcopy "$(ProjectDir)\Data\*" "$(OutDir)Assets\" /y /s</Command>
+xcopy "$(ProjectDir)\Data\*" "$(OutDir)Data\" /y /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimatedTexture.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AudioManager.cpp" />
-    <ClCompile Include="backgroundstars.cpp" />
-    <ClCompile Include="boss.cpp" />
-    <ClCompile Include="tinyxml2.cpp" />
-    <ClCompile Include="wasp.cpp" />
-    <ClCompile Include="beziarpath.cpp" />
+    <ClCompile Include="BackgroundStars.cpp" />
+    <ClCompile Include="BezierPAth.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
-    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Butterfly.cpp" />
+    <ClCompile Include="capturebeam.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Formation.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="level.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="PhysEntity.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScreen.cpp" />
-    <ClCompile Include="playsidebar.cpp" />
-    <ClCompile Include="Randomcpp.cpp" />
-    <ClCompile Include="scoreboard.cpp" />
-    <ClCompile Include="screenmanager.cpp" />
+    <ClCompile Include="PlaySideBar.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Scoreboard.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="SDL_Framework.cpp" />
     <ClCompile Include="Star.cpp" />
-    <ClCompile Include="starlayer.cpp" />
+    <ClCompile Include="StarLayer.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="Wasp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AudioManager.h" />
-    <ClInclude Include="backgrounstars.h" />
-    <ClInclude Include="beziarpath.h" />
-    <ClInclude Include="boss.h" />
-    <ClInclude Include="tinyxml2.h" />
-    <ClInclude Include="wasp.h" />
+    <ClInclude Include="BackgroundStars.h" />
+    <ClInclude Include="BezierPath.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="BoxCollider.h" />
-    <ClInclude Include="bullet.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Butterfly.h" />
+    <ClInclude Include="capturebeam.h" />
     <ClInclude Include="CircleCollider.h" />
     <ClInclude Include="Collider.h" />
-    <ClInclude Include="enemy.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Formation.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="level.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="PhysEntity.h" />
     <ClInclude Include="PhysicsHelper.h" />
     <ClInclude Include="PhysicsManager.h" />
-    <ClInclude Include="player.h" />
-    <ClInclude Include="playscreen.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayScreen.h" />
     <ClInclude Include="PlaySideBar.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="scoreboard.h" />
-    <ClInclude Include="screenmanager.h" />
-    <ClInclude Include="star.h" />
-    <ClInclude Include="starlayer.h" />
+    <ClInclude Include="Scoreboard.h" />
+    <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="Star.h" />
+    <ClInclude Include="StarLayer.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="Wasp.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Data\Level1.xml" />

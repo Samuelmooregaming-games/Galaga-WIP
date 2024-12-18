@@ -1,27 +1,29 @@
 #pragma once
 #include "StartScreen.h"
-#include "backgrounstars.h"
-#include "InputManager.h"
-#include "playscreen.h"
+#include "BackgroundStars.h"
+#include "PlayScreen.h"
 
 class ScreenManager {
 public:
 	static ScreenManager* Instance();
 	static void Release();
+
 	void Update();
 	void Render();
+
 private:
-	static ScreenManager* sInstance;
 	ScreenManager();
 	~ScreenManager();
-	
-	InputManager* mInput;
-	BackgroundStars* mBackgroundStars;
-	StartScreen* mStartScreen;
-	PlayScreen* mPlayscreen;
-	
 
-
-	enum Screens {Start, Play, Loose};
+	enum Screens {Start, Play};
 	Screens mCurrentScreen;
+
+	static ScreenManager* sInstance;
+
+	BackgroundStars* mBackgroundStars;
+	InputManager* mInput;
+
+	//Screens
+	StartScreen* mStartScreen;
+	PlayScreen* mPlayScreen;
 };

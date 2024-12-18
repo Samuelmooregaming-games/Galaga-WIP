@@ -118,7 +118,7 @@ void PlaySideBar::AddNextFlag() {
 	}
 	else if (mRemainingLevels >= 5) {
 		AddFlag("LevelFlags.png", 30, 5);
-	}
+	} 
 	else {
 		AddFlag("LevelFlags.png", 30, 1);
 	}
@@ -167,7 +167,7 @@ void PlaySideBar::AddFlag(std::string filename, float width, int value) {
 	mFlagTextures[index]->Position(mFlagXOffset, mFlagYOffset);
 	mFlagXOffset += width * 0.5f;
 
-	mAudio->PlaySFX("Audio/FlagSound.wav", 0, -1);
+	mAudio->PlaySFX("SFX/FlagSound.wav", 0, -1);
 }
 
 void PlaySideBar::SetShips(int ships) {

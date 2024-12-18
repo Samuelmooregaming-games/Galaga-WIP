@@ -135,7 +135,8 @@ namespace SDLFramework {
 			std::cerr << "Unable to get renderer. SDL_Error: " << SDL_GetError() << std::endl;
 			return false;
 		}
-		
+
+		//Uncomment the below line to change the background to white for position testing
 		//SDL_SetRenderDrawColor(mRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
 		if (TTF_Init() == -1) {

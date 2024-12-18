@@ -1,35 +1,39 @@
 #pragma once
 #include "Timer.h"
-#include"scoreboard.h"
+#include "Scoreboard.h"
 #include "AudioManager.h"
 
-//using namespace SDLFramework;
+using namespace SDLFramework;
 
 class PlaySideBar : public GameEntity {
 public:
 	PlaySideBar();
 	~PlaySideBar();
-	void SetHighScore(int score);
-	void SetPlayerScore(int score);
+
 	void SetShips(int ships);
+	void SetPlayerScore(int score);
+	void SetHighScore(int score);
+
 	void SetLevel(int level);
+
 	void Update() override;
 	void Render() override;
 private:
 	static const int MAX_SHIP_TEXTURES = 5;
-
 	Timer* mTimer;
 	AudioManager* mAudio;
-	
+
 	Texture* mBackground;
 
 	Texture* mHighLabel;
 	Texture* mScoreLabel;
 	Scoreboard* mHighScoreBoard;
+
 	Texture* mOneUpLabel;
 	float mBlinkTimer;
 	float mBlinkInterval;
 	bool mOneUpLabelVisible;
+
 	Scoreboard* mPlayerOneScore;
 
 	GameEntity* mShips;
@@ -40,6 +44,7 @@ private:
 	GameEntity* mFlags;
 	std::vector<Texture*> mFlagTextures;
 	int mRemainingLevels;
+
 	float mFlagXOffset;
 	float mFlagYOffset;
 	float mFlagTimer;
@@ -48,7 +53,4 @@ private:
 	void ClearFlags();
 	void AddNextFlag();
 	void AddFlag(std::string filename, float width, int value);
-
-
-
 };

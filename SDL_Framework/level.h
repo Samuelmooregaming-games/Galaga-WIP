@@ -1,35 +1,50 @@
 #pragma once
 #include "PlaySideBar.h"
-#include "backgrounstars.h"
-#include "player.h"
+#include "BackgroundStars.h"
+#include "Player.h"
 #include "Butterfly.h"
-#include"Formation.h"
-#include "enemy.h"
-#include"wasp.h"
+#include "Wasp.h"
 #include "Boss.h"
 #include "tinyxml2.h"
+
 using namespace SDLFramework;
 using namespace tinyxml2;
 
 class Level : public GameEntity {
 public:
-	
-
 	enum LevelStates {Running, Finished, GameOver};
-	Level(int stage, PlaySideBar* sidebar, Player* player);
+
+	Level(int stage, PlaySideBar* sideBar, Player* player);
 	~Level();
+
 	LevelStates State();
-	void Update(); //override
-	void Render(); //override
-	
+
+	void Update();
+	void Render();
 
 private:
 	Timer* mTimer;
-	PlaySideBar* mSidebar;
-	BackgroundStars* mStars;
+	PlaySideBar* mSideBar;
+	BackgroundStars* mBackgroundStars;
+
 	Player* mPlayer;
-	
 	Formation* mFormation;
+
+	Butterfly* mDivingButterfly;
+	bool mSkipFirstButterfly;
+	float mButterflyDiveDelay;
+	float mButterflyDiveTimer;
+
+	Wasp* mDivingWasp;
+	Wasp* mDivingWasp2;
+	float mWaspDiveDelay;
+	float mWaspDiveTimer;
+
+	Boss* mDivingBoss;
+	bool mCaptureDive;
+	bool mSkipFirstBoss;
+	float mBossDiveDelay;
+	float mBossDiveTimer;
 
 	static const int MAX_BUTTERFLIES = 16;
 	static const int MAX_WASPS = 20;
@@ -40,23 +55,26 @@ private:
 	int mBossCount;
 	
 	Butterfly* mFormationButterflies[MAX_BUTTERFLIES];
-	Wasp* mFormationWasps[MAX_WASPS];
+	
+	
+	
+	Wasp* mFormationWasp[MAX_WASPS];
 	Boss* mFormationBoss[MAX_BOSSES];
+	
 
 	std::vector<Enemy*> mEnemies;
 
 	XMLDocument mSpawningPatterns;
 	int mCurrentFlyInPriority;
-	int mCurrentFlyIndex;
+	int mCurrentFlyInIndex;
 
 	float mSpawnDelay;
 	float mSpawnTimer;
-	bool SpawningFinnished;
-
+	bool mSpawningFinished;
 
 	int mStage;
 	bool mChallengeStage;
-	bool mstagestarted;
+	bool mStageStarted;
 
 	Texture* mReadyLabel;
 	float mReadyLabelOnScreen;
@@ -64,27 +82,29 @@ private:
 
 	Texture* mStageLabel;
 	Scoreboard* mStageNumber;
-	Texture* mGameOver;
 	float mStageLabelOnScreen;
 	float mStageLabelOffScreen;
 
-	float LabelTimer;
+	float mLabelTimer;
 
-
-
-	bool mplayerhit;
+	bool mPlayerHit;
 	float mRespawnDelay;
-	float mrespawntimer;
-	float mrespawnlabelonscreen;
-	LevelStates mCurrentState;
-	float mgameoverdelay;
-	float mgameovertimer;
+	float mRespawnTimer;
+	float mRespawnLabelOnScreen;
+
+	Texture* mGameOverLabel;
+	float mGameOverDelay;
+	float mGameOverTimer;
 	float mGameOverLabelOnScreen;
+
+	LevelStates mCurrentState;
+
 	
-	void HandleStartLabel();
+
+	void HandleStartLabels();
 	void HandleCollisions();
 	void HandlePlayerDeath();
-	
+
 	void StartStage();
 
 	bool EnemyFlyingIn();
@@ -92,5 +112,6 @@ private:
 	void HandleEnemySpawning();
 	void HandleEnemyFormation();
 	void HandleEnemyDiving();
-
+	
+	
 };

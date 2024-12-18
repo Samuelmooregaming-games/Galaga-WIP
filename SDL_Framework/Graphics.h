@@ -23,6 +23,7 @@ namespace SDLFramework {
 			float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 		SDL_Texture* CreateTextTexture(TTF_Font* font, std::string text, SDL_Color color);
+
 		void DrawLine(float startX, float startY, float endX, float endY);
 
 		//Cleanup that happens to the area in memory that draws the next frame

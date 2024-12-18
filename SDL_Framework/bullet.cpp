@@ -1,4 +1,4 @@
-#include "bullet.h"
+#include "Bullet.h"
 #include "BoxCollider.h"
 #include "PhysicsManager.h"
 
@@ -9,11 +9,11 @@ bool Bullet::IgnoreCollisions() {
 Bullet::Bullet(bool friendly) {
 	mTimer = Timer::Instance();
 
-	mTexture = new Texture("/Bullet.png");
+	mTexture = new Texture("Bullet.png");
 	mTexture->Parent(this);
 	mTexture->Position(Vec2_Zero);
 
-	mSpeed = 750.0f;
+	mSpeed = 500.0f;
 
 	Reload();
 
@@ -28,7 +28,7 @@ Bullet::Bullet(bool friendly) {
 }
 
 Bullet::~Bullet() {
-	mTexture = nullptr;
+	mTimer = nullptr;
 
 	delete mTexture;
 	mTexture = nullptr;
@@ -64,3 +64,4 @@ void Bullet::Render() {
 		PhysEntity::Render();
 	}
 }
+

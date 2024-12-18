@@ -1,4 +1,4 @@
-#include "backgrounstars.h"
+#include "BackgroundStars.h"
 
 BackgroundStars* BackgroundStars::sInstance = nullptr;
 
@@ -6,6 +6,7 @@ BackgroundStars* BackgroundStars::Instance() {
 	if (sInstance == nullptr) {
 		sInstance = new BackgroundStars();
 	}
+
 	return sInstance;
 }
 
@@ -15,6 +16,7 @@ void BackgroundStars::Release() {
 }
 
 void BackgroundStars::Scroll(bool scroll) {
+
 	Star::Scroll(scroll);
 }
 
@@ -42,3 +44,4 @@ BackgroundStars::BackgroundStars() {
 		mLayers[i] = new StarLayer(i);
 	}
 }
+

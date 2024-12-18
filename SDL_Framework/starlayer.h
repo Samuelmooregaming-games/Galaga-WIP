@@ -1,5 +1,5 @@
 #pragma once
-#include"star.h"
+#include "Star.h"
 
 class StarLayer {
 public:

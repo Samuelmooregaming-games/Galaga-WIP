@@ -1,8 +1,7 @@
 #pragma once
 #include "AnimatedTexture.h"
 #include "InputManager.h"
-#include"scoreboard.h"
-#include "backgrounstars.h"
+#include "Scoreboard.h"
 
 using namespace SDLFramework;
 
@@ -10,11 +9,12 @@ class StartScreen : public GameEntity {
 public:
 	StartScreen();
 	~StartScreen();
+
+	void ChangeSelectedMode(int change);
+
 	void ResetAnimation();
 
 	int SelectedMode();
-
-	void ChangeSelectedMode(int change);
 
 	void Update() override;
 	void Render() override;
@@ -23,8 +23,9 @@ private:
 	Timer* mTimer;
 	InputManager* mInputManager;
 
+	//Screen Animation Variables
 	Vector2 mAnimationStartPos;
-	Vector2 mAnimationEndpos;
+	Vector2 mAnimationEndPos;
 	float mAnimationTotalTime;
 	float mAnimationTimer;
 	bool mAnimationDone;
@@ -36,10 +37,9 @@ private:
 	Texture* mPlayerOne;
 	Texture* mPlayerTwo;
 	Texture* mHiScore;
-	Scoreboard* mplayerOneScore;
-	Scoreboard* mplayerTwoScore;
+	Scoreboard* mPlayerOneScore;
+	Scoreboard* mPlayerTwoScore;
 	Scoreboard* mTopScore;
-
 
 	//Logo Entities
 	GameEntity* mLogoHolder;
@@ -53,7 +53,6 @@ private:
 	Texture* mCursor;
 	Vector2 mCursorStartPos;
 	Vector2 mCursorOffsetPos;
-	BackgroundStars* mStars;
 	int mSelectedMode;
 
 	//Bottom Bar

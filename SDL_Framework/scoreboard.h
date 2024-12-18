@@ -1,6 +1,6 @@
 #pragma once
-#include"Texture.h"
-#include<vector>
+#include "Texture.h"
+#include <vector>
 
 using namespace SDLFramework;
 
@@ -14,13 +14,9 @@ public:
 
 	void Render() override;
 
-
 private:
 	void ClearBoard();
 
 	std::vector<Texture*> mScore;
 	SDL_Color mColor;
 };
-
-
-
